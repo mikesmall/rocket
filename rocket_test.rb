@@ -91,10 +91,11 @@ class RocketTest < Minitest::Test
     refute @rocket.land # and it can't land when it already landed
   end
 
-  def cant_land_because_its_not_flying
-    @rocket.land
-    assert @rocket.flying?
-  end
+  # Seems superfluous now:
+  #       def cant_land_because_its_not_flying
+  #         assert @rocket.flying?
+  #         refute @rocket.land
+  #       end
 
   def test_status
     skip
