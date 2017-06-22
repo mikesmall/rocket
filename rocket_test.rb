@@ -97,6 +97,27 @@ class RocketTest < Minitest::Test
   #       refute @rocket.land
   #     end
 
+  #------------------------------------------------------
+  # Coding along with Daniel and Melina:
+  # 1.
+  def test_flying_rocket_can_land
+    apollo = Rocket.new(:flying => true) # Create a new rocket, make it fly.
+    assert apollo.flying? # Is it flying?
+  end
+  # 2.
+  def test_flying_rocket_becomes_not_flying_after_landing
+     rocky = Rocket.new(:flying => true)
+     rocky.land
+     refute rocky.flying?
+  end
+  # 3.
+  def test_grounded_rocket_cant_land
+    adrian = Rocket.new(:flying => false)
+    adrian.land
+    refute adrian.land
+  end
+  #------------------------------------------------------
+
   def test_status_is_flying
     # arrange
     @rocket.name = "Timmy" # Method seems to require @rocket to be named.
