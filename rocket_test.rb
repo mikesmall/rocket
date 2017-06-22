@@ -50,17 +50,37 @@ class RocketTest < Minitest::Test
     refute @rocket.colour == 5678
   end
 
-  # If the rocket is already FLYING, then it
-  # can't LIFT OFF.
+  # If the rocket is already FLYING, then
+  # it can't LIFT OFF (because it already did)
 
-  def test_lift_off_for_false
-    @rocket.flying? == false
-    assert @rocket.flying? == false
+  # lift_off (the METHOD) CAUSES
+  # flying (the STATE) to be TRUE
+
+  # (just like in real life!)
+
+  # Two old versions of this test that sucked:
+  #-------------------------------------------
+  #   def test_lift_off_for_false
+  #     @rocket.flying? == false
+  #     assert @rocket.flying? == false
+  #   end
+  #-------------------------------------------
+  #   def test_lift_off_for_true
+  #     @rocket.flying? == true
+  #     assert @rocket.flying? == true
+  #   end
+  #-------------------------------------------
+
+  # New ones:
+  def test_liftoff_was_successful
+    @rocket.lift_off # rocket is now flying
+    refute @rocket.lift_off
+    # can't lift off because it's already flying
   end
 
-  def test_lift_off_for_true
-    @rocket.flying? == true
-    assert @rocket.flying? == false
+  def test_rocket_is_definitely_flying
+    @rocket.lift_off # causes rocket to fly
+    assert @rocket.flying? == true
   end
 
   def test_status
@@ -68,6 +88,5 @@ class RocketTest < Minitest::Test
     @rocket.name = "Timmy"
     @rocket.flying? == true
   end
-
 
 end#class
