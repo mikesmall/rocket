@@ -83,6 +83,12 @@ class RocketTest < Minitest::Test
     assert @rocket.flying? == true
   end
 
+  def test_landing
+    @rocket.lift_off # get the rocket into the air
+    @rocket.land # trying to make it land
+    refute @rocket.flying? # 'cause if it landed, it ain't flying
+  end
+
   def test_status
     skip
     @rocket.name = "Timmy"
