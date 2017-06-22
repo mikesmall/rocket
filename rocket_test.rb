@@ -89,6 +89,11 @@ class RocketTest < Minitest::Test
     refute @rocket.flying? # 'cause if it landed, it ain't flying
   end
 
+  def cant_land_because_its_not_flying
+    @rocket.land
+    assert @rocket.flying? 
+  end
+
   def test_status
     skip
     @rocket.name = "Timmy"
