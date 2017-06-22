@@ -92,15 +92,22 @@ class RocketTest < Minitest::Test
   end
 
   # Seems superfluous now:
-  #       def cant_land_because_its_not_flying
-  #         assert @rocket.flying?
-  #         refute @rocket.land
-  #       end
+  #     def cant_land_because_its_not_flying
+  #       assert @rocket.flying?
+  #       refute @rocket.land
+  #     end
 
-  def test_status
+  def test_status_is_flying
+    # arrange
+    @rocket.name = "Timmy" # Method seems to require @rocket to be named.
+    # act
+    @rocket.lift_off # Cause 'flying?' to become 'true'.
+    # assert
+    assert @rocket.flying?
+  end
+
+  def test_status_is_landed
     skip
-    @rocket.name = "Timmy"
-    @rocket.flying? == true
   end
 
 end#class
