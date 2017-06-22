@@ -107,7 +107,13 @@ class RocketTest < Minitest::Test
   end
 
   def test_status_is_landed
-    skip
+    # arrange
+    @rocket.name = "Timmy" # Method seems to require @rocket to be named.
+    # act
+    @rocket.lift_off # Cause 'flying?' to become 'true'.
+    @rocket.land # Make 'flying?' false again.
+    # assert
+    refute @rocket.flying?
   end
 
 end#class
