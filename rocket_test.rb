@@ -138,4 +138,20 @@ class RocketTest < Minitest::Test
     refute @rocket.flying?
   end
 
+  # New status tests, using Rocket.new:
+
+  def test_status_is_flying
+    wayne = Rocket.new(name: "Wayne", flying: true)
+    wheres_wayne = wayne.status
+    assert_equal(wheres_wayne, "Rocket Wayne is flying through the sky!")
+  end
+
+  def test_status_is_landed_2
+    garth = Rocket.new(name: "Garth", flying: false)
+    wheres_garth = garth.status
+    assert_equal(wheres_garth, "Rocket Garth is ready for lift off!")
+  end
+
+
+
 end#class
