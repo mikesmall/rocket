@@ -50,9 +50,24 @@ class RocketTest < Minitest::Test
     refute @rocket.colour == 5678
   end
 
-  def test_lift_off
+  # If the rocket is already FLYING, then it
+  # can't LIFT OFF.
+
+  def test_lift_off_for_false
     @rocket.flying? == false
-    assert @rocket.flying? == false     
+    assert @rocket.flying? == false
   end
+
+  def test_lift_off_for_true
+    @rocket.flying? == true
+    assert @rocket.flying? == false
+  end
+
+  def test_status
+    skip
+    @rocket.name = "Timmy"
+    @rocket.flying? == true
+  end
+
 
 end#class
