@@ -85,13 +85,15 @@ class RocketTest < Minitest::Test
 
   def test_landing
     @rocket.lift_off # get the rocket into the air
+    assert @rocket.flying? # make sure liftoff was achieved
     @rocket.land # trying to make it land
     refute @rocket.flying? # 'cause if it landed, it ain't flying
+    refute @rocket.land # and it can't land when it already landed
   end
 
   def cant_land_because_its_not_flying
     @rocket.land
-    assert @rocket.flying? 
+    assert @rocket.flying?
   end
 
   def test_status
