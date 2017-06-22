@@ -114,7 +114,8 @@ class RocketTest < Minitest::Test
   def test_grounded_rocket_cant_land
     adrian = Rocket.new(:flying => false)
     adrian.land
-    refute adrian.land
+    assert adrian.land == false # This one,
+    refute adrian.land          # and this one, are diff't ways to 'false'
   end
   #------------------------------------------------------
 
