@@ -140,7 +140,7 @@ class RocketTest < Minitest::Test
 
   # New status tests, using Rocket.new:
 
-  def test_status_is_flying
+  def test_status_is_flying_2
     wayne = Rocket.new(name: "Wayne", flying: true)
     wheres_wayne = wayne.status
     assert_equal(wheres_wayne, "Rocket Wayne is flying through the sky!")
@@ -152,6 +152,16 @@ class RocketTest < Minitest::Test
     assert_equal(wheres_garth, "Rocket Garth is ready for lift off!")
   end
 
+  # Simpler status tests that ignore the output string:
 
+  def test_status_is_flying_3
+    @rocket = Rocket.new(:flying => true)
+    assert @rocket.status
+  end
+
+  def test_status_is_landed_3
+    assert @rocket.flying? == false
+    refute @rocket.status == false
+  end
 
 end#class
